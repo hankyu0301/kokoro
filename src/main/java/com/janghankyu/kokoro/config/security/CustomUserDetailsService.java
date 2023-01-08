@@ -21,7 +21,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     private final TokenHelper accessTokenHelper;
 
     @Override
-    public UserDetails loadUserByUsername(String token) throws UsernameNotFoundException {
+    public CustomUserDetails loadUserByUsername(String token) throws UsernameNotFoundException {
         return accessTokenHelper.parse(token)
                 .map(this::convert)
                 .orElse(null);
