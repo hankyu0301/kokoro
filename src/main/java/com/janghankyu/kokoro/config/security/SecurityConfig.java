@@ -2,6 +2,7 @@ package com.janghankyu.kokoro.config.security;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -33,13 +34,15 @@ public class SecurityConfig {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .anyRequest().hasAnyRole("ROLE_ADMIN")
+                    .antMatchers(HttpMethod.GET, "/image/**","/api/members/{id}").permitAll()
+                    .antMatchers(HttpMethod.POST, "/api/sign-in", "/api/sign-up", "/api/refresh-token").permitAll()
+                    .antMatchers(HttpMethod.DELETE, "/api/members/{id}/**").authenticated()
+                    .anyRequest().hasAnyRole("ROLE_ADMIN")
                 .and()
-                .addFilterBefore(new JwtAuthenticationFilter(userDetailsService), UsernamePasswordAuthenticationFilter.class);
-                 /*.and()
-                .exceptionHandling().authenticationEntryPoint()
+                    .addFilterBefore(new JwtAuthenticationFilter(userDetailsService), UsernamePasswordAuthenticationFilter.class)
+                    .exceptionHandling().authenticationEntryPoint(new CustomAuthenticationEntryPoint())
                 .and()
-                .exceptionHandling().accessDeniedHandler();*/
+                    .exceptionHandling().accessDeniedHandler(new CustomAccessDeniedHandler());
 
 
         return http.build();
