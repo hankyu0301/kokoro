@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @Slf4j
 public class MemberController {
-
     private final MemberService memberService;
 
     @GetMapping("/api/members/{id}")
