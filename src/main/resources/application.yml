@@ -15,3 +15,6 @@ spring:
   profiles:
     active: local
     include: secret
+
+  messages:
+    basename: i18n/exception,i18n/validation
