@@ -13,8 +13,9 @@ public enum ExceptionType {
     MEMBER_NICKNAME_ALREADY_EXISTS_EXCEPTION("memberNicknameAlreadyExistsException.code", "memberNicknameAlreadyExistsException.msg"),
     MEMBER_NOT_FOUND_EXCEPTION("memberNotFoundException.code", "memberNotFoundException.msg"),
     MISSING_REQUEST_HEADER_EXCEPTION("missingRequestHeaderException.code", "missingRequestHeaderException.msg"),
-    REFRESH_TOKEN_FAILURE_EXCEPTION("refreshTokenFailureException.code", "refreshTokenFailureException.msg");
-
+    REFRESH_TOKEN_FAILURE_EXCEPTION("refreshTokenFailureException.code", "refreshTokenFailureException.msg"),
+    CATEGORY_NOT_FOUND_EXCEPTION("categoryNotFoundException.code", "categoryNotFoundException.msg"),
+    CANNOT_CONVERT_NESTED_STRUCTURE_EXCEPTION("cannotConvertNestedStructureException.code", "cannotConvertNestedStructureException.msg");
     private final String code;
     private final String message;
 

@@ -78,6 +78,18 @@ public class ExceptionAdvice {
         return getFailureResponse(REFRESH_TOKEN_FAILURE_EXCEPTION);
     }
 
+    @ExceptionHandler(CategoryNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public Response categoryNotFoundException() {
+        return getFailureResponse(CATEGORY_NOT_FOUND_EXCEPTION);
+    }
+
+    @ExceptionHandler(CannotConvertNestedStructureException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public Response cannotConvertNestedStructureException(CannotConvertNestedStructureException e) {
+        log.error("e = {}", e.getMessage());
+        return getFailureResponse(CANNOT_CONVERT_NESTED_STRUCTURE_EXCEPTION);
+    }
 
     private Response getFailureResponse(ExceptionType exceptionType) {
         return responseHandler.getFailureResponse(exceptionType);
