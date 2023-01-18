@@ -91,6 +91,25 @@ public class ExceptionAdvice {
         return getFailureResponse(CANNOT_CONVERT_NESTED_STRUCTURE_EXCEPTION);
     }
 
+    @ExceptionHandler(PostNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public Response postNotFoundException() {
+        return getFailureResponse(POST_NOT_FOUND_EXCEPTION);
+    }
+
+    @ExceptionHandler(UnsupportedImageFormatException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public Response unsupportedImageFormatException() {
+        return getFailureResponse(UNSUPPORTED_IMAGE_FORMAT_EXCEPTION);
+    }
+
+    @ExceptionHandler(FileUploadFailureException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public Response fileUploadFailureException(FileUploadFailureException e) {
+        log.error("e = {}", e.getMessage());
+        return getFailureResponse(FILE_UPLOAD_FAILURE_EXCEPTION);
+    }
+
     private Response getFailureResponse(ExceptionType exceptionType) {
         return responseHandler.getFailureResponse(exceptionType);
     }

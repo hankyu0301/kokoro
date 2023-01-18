@@ -15,7 +15,10 @@ public enum ExceptionType {
     MISSING_REQUEST_HEADER_EXCEPTION("missingRequestHeaderException.code", "missingRequestHeaderException.msg"),
     REFRESH_TOKEN_FAILURE_EXCEPTION("refreshTokenFailureException.code", "refreshTokenFailureException.msg"),
     CATEGORY_NOT_FOUND_EXCEPTION("categoryNotFoundException.code", "categoryNotFoundException.msg"),
-    CANNOT_CONVERT_NESTED_STRUCTURE_EXCEPTION("cannotConvertNestedStructureException.code", "cannotConvertNestedStructureException.msg");
+    CANNOT_CONVERT_NESTED_STRUCTURE_EXCEPTION("cannotConvertNestedStructureException.code", "cannotConvertNestedStructureException.msg"),
+    POST_NOT_FOUND_EXCEPTION("postNotFoundException.code", "postNotFoundException.msg"),
+    UNSUPPORTED_IMAGE_FORMAT_EXCEPTION("unsupportedImageFormatException.code", "unsupportedImageFormatException.msg"),
+    FILE_UPLOAD_FAILURE_EXCEPTION("fileUploadFailureException.code", "fileUploadFailureException.msg");
     private final String code;
     private final String message;
 
