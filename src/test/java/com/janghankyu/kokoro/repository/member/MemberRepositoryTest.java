@@ -1,10 +1,12 @@
 package com.janghankyu.kokoro.repository.member;
 
+import com.janghankyu.kokoro.config.QuerydslConfig;
 import com.janghankyu.kokoro.entity.member.Member;
 import com.janghankyu.kokoro.exception.MemberNotFoundException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.dao.DataIntegrityViolationException;
 
 import javax.persistence.EntityManager;
@@ -17,6 +19,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 @DataJpaTest
+@Import(QuerydslConfig.class)
 class MemberRepositoryTest {
 
     @Autowired MemberRepository memberRepository;
